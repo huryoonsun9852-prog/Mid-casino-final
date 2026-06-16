@@ -1,0 +1,52 @@
+<!doctype html><meta charset="utf-8"><title>GIF path test</title><body style="margin:0;background:#050505;color:#e8e4db;font-family:sans-serif"><h1>GIF path test</h1><p>If this moves, the asset path is correct.</p><img src="assets/kinetic-title-motion.gif" style="width:480px;max-width:90vw;border:1px solid #333">
+
+<style id="ys-final-v6-fixes">
+/* === USER PATCH V6: remove visible horizontal separator lines + exact compact nav === */
+@media (min-width:901px){
+  .nav{
+    height:78px!important;
+    min-height:78px!important;
+    padding-top:0!important;
+    padding-bottom:0!important;
+  }
+  .nav .links a{
+    height:78px!important;
+    line-height:78px!important;
+    font-size:15px!important;
+  }
+  .nav .links a:after,
+  .nav .links a::after{
+    bottom:22px!important;
+  }
+}
+/* Remove the long pale horizontal rules visible behind main section headers. */
+section,
+section[data-section],
+.cfw-head,
+.section-head,
+.characters .section-head,
+.scenes .section-head,
+.applications .section-head,
+.quote-dribbble-head{
+  border-top:0!important;
+  border-bottom:0!important;
+}
+.cfw-head{
+  padding-top:0!important;
+}
+.section-head::before,
+.section-head::after,
+.cfw-head::before,
+.cfw-head::after,
+.quote-dribbble-head::before,
+.quote-dribbble-head::after,
+section[data-section]::before,
+section[data-section]::after{
+  background:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  opacity:0!important;
+}
+</style>
+
+</body>

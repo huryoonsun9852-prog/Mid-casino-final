@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CASINO — Kinetic Title</title>
+  <link as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <style>
+    :root{--bg:#050505;--paper:#e8e4db;--muted:rgba(232,228,219,.55);--line:rgba(232,228,219,.12);--red:#8d2418;}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--paper);font-family:Pretendard,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:20;display:grid;grid-template-columns:170px 1fr;align-items:start;padding:28px 38px 42px;background:linear-gradient(to bottom,rgba(5,5,5,.30),rgba(5,5,5,.12),rgba(5,5,5,0));backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+    .logo{color:var(--paper);text-decoration:none;font-size:26px;font-weight:950;letter-spacing:-.08em;line-height:.86}.links{display:flex;justify-content:flex-end;gap:34px}.links a{position:relative;color:rgba(232,228,219,.62);text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.links a.active,.links a:hover{color:var(--paper)}
+    .wrap{width:min(1200px,100%);margin:0 auto;padding:150px 36px 80px}.eyebrow{display:block;margin-bottom:22px;color:var(--muted);font-size:13px;font-weight:850;letter-spacing:.12em;text-transform:uppercase}.hero{border-top:1px solid var(--line);padding-top:34px;margin-bottom:34px}.hero h1{margin:0;font-size:clamp(56px,10vw,128px);line-height:.83;letter-spacing:-.095em;font-weight:950}
+    .stage{position:relative;min-height:620px;border:1px solid var(--line);background:#020202;overflow:hidden;display:grid;place-items:center}.stage-label{position:absolute;left:24px;top:22px;z-index:2;color:rgba(232,228,219,.50);font-size:11px;font-weight:850;letter-spacing:.12em;text-transform:uppercase}.kinetic-img{display:block;width:100%;height:100%;min-height:620px;object-fit:cover;object-position:center;filter:none;opacity:1;mix-blend-mode:normal}.next{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}.next a{border:1px solid var(--line);padding:16px 14px;color:rgba(232,228,219,.68);text-decoration:none;font-size:12px;font-weight:850;letter-spacing:.04em}.next a:hover{color:var(--paper);border-color:rgba(141,36,24,.75)}
+    @media(max-width:760px){.nav{grid-template-columns:1fr;gap:16px;padding:20px}.links{justify-content:flex-start;gap:18px;overflow-x:auto}.wrap{padding:120px 18px 56px}.stage{min-height:430px}.kinetic-img{min-height:430px}.next{grid-template-columns:1fr 1fr}.hero h1{font-size:64px}}
+
+    /* Kinetic detail visibility hard fix */
+    .stage::before,.stage::after{content:none!important;display:none!important;background:none!important;opacity:0!important;}
+    .stage{isolation:isolate!important;background:#020202!important;}
+    .stage .kinetic-img{position:relative!important;z-index:1!important;opacity:1!important;visibility:visible!important;filter:none!important;mix-blend-mode:normal!important;}
+  
+
+/* === USER PATCH V5: clean background lines, compact nav, remove quote keyword tags === */
+@media (min-width:901px){
+  .nav{height:78px!important;min-height:78px!important;padding-top:0!important;padding-bottom:0!important;}
+  .nav .links a{height:78px!important;font-size:13px!important;line-height:78px!important;}
+  .nav .links a:after,.nav .links a::after{bottom:23px!important;}
+}
+.grid,.hero>.grid,#overview.hero>.grid{display:none!important;background:none!important;opacity:0!important;}
+.noise{display:none!important;background:none!important;opacity:0!important;}
+.quote.quote-dribbble::before,.stage::before{background:none!important;opacity:0!important;display:none!important;}
+.quote-ui-tags{display:none!important;}
+.quote-ui-card{padding-bottom:25px!important;}
+
+</style>
+
+<style id="nav-height-80px">
+.nav{height:80px!important;min-height:80px!important;}
+.nav .links a{height:80px!important;}
+.nav .links a:after,.nav .links a::after{bottom:24px!important;}
+@media(max-width:900px){.nav{height:auto!important;min-height:auto!important;}.nav .links a{height:28px!important;}.nav .links a:after,.nav .links a::after{bottom:0!important;}}
+</style>
+
+<style id="casino-unified-footer-style">
+.site-footer{
+  min-height:88px;
+  display:grid;
+  grid-template-columns:160px minmax(0,1fr) auto;
+  align-items:center;
+  gap:22px;
+  padding:26px 32px;
+  border-top:1px solid rgba(255,255,255,.075);
+  background:#050505;
+  color:#777168;
+  font-family:Pretendard,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+}
+.site-footer a{color:inherit;text-decoration:none;}
+.site-footer-logo{
+  color:#dedad0!important;
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:-.04em;
+}
+.site-footer-logo:before,.site-footer .logo:before{display:none!important;}
+.site-footer-note{
+  justify-self:center;
+  text-align:center;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:#6f6961;
+}
+.site-footer-links{display:flex;gap:22px;justify-content:flex-end;align-items:center;flex-wrap:wrap;}
+.site-footer-school{justify-self:end;text-align:right;font-size:11px;font-weight:760;letter-spacing:.10em;text-transform:uppercase;color:#777168;white-space:nowrap;}
+.site-footer-links a{
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  transition:color .22s var(--ease,cubic-bezier(.16,1,.3,1));
+}
+.site-footer-links a:hover{color:#dedad0;}
+@media(max-width:900px){
+  .site-footer{grid-template-columns:1fr;align-items:start;padding:30px 22px;gap:16px;}
+  .site-footer-note{justify-self:start;text-align:left;}
+  .site-footer-links{justify-content:flex-start;gap:18px;}
+  .site-footer-school{justify-self:start;text-align:left;white-space:normal;}
+}
+</style>
+
+<style id="casino-cleanup-v4-style">
+/* Cleanup requested: remove extra footer note and background hairlines */
+.site-footer{grid-template-columns:170px minmax(0,1fr)!important;}
+.site-footer-note{display:none!important;}
+.site-footer-school{grid-column:2!important;justify-self:end!important;}
+.grid{display:none!important;}
+.noise{background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(141,36,24,.16),transparent 22rem)!important;opacity:.10!important;}
+.page{border-left:0!important;border-right:0!important;}
+@media(max-width:900px){.site-footer{grid-template-columns:1fr!important}.site-footer-school{grid-column:auto!important;justify-self:start!important;text-align:left!important;}}
+</style>
+</head>
+<body>
+  <nav aria-label="Primary navigation" class="nav">
+    <a class="logo" href="../index.html">CASINO</a>
+    <div class="links" id="navLinks"><a href="../index.html">Contents</a><a href="../author.html">Author</a><a href="../book-info.html">Book Info</a><a href="../applications.html" class="active">Applications</a></div>
+  </nav>
+  <main class="wrap">
+    <span class="eyebrow">02 / Motion</span>
+    <section class="hero"><h1>Kinetic Title</h1></section>
+    <section class="stage">
+      <span class="stage-label">02 / Motion / Detail Preview</span>
+      <img class="kinetic-img" src="../assets/kinetic-title-motion.gif" alt="Kinetic Title motion artwork" loading="eager" decoding="async">
+    </section>
+    <div class="next"><a href="type-flyer.html">01 Type Flyer</a><a href="kinetic-title.html">02 Kinetic Title</a><a href="video.html">03 Video</a><a href="instagram.html">04 Instagram</a></div>
+  
+<footer class="site-footer">
+  <a class="site-footer-logo" href="../index.html">CASINO</a>
+  <div class="site-footer-school">HKNU- Media Design1&nbsp; · &nbsp;Digital Book Archive</div>
+</footer>
+</main>
+
+
+<style id="ys-final-v6-fixes">
+/* === USER PATCH V6: remove visible horizontal separator lines + exact compact nav === */
+@media (min-width:901px){
+  .nav{
+    height:78px!important;
+    min-height:78px!important;
+    padding-top:0!important;
+    padding-bottom:0!important;
+  }
+  .nav .links a{
+    height:78px!important;
+    line-height:78px!important;
+    font-size:15px!important;
+  }
+  .nav .links a:after,
+  .nav .links a::after{
+    bottom:22px!important;
+  }
+}
+/* Remove the long pale horizontal rules visible behind main section headers. */
+section,
+section[data-section],
+.cfw-head,
+.section-head,
+.characters .section-head,
+.scenes .section-head,
+.applications .section-head,
+.quote-dribbble-head{
+  border-top:0!important;
+  border-bottom:0!important;
+}
+.cfw-head{
+  padding-top:0!important;
+}
+.section-head::before,
+.section-head::after,
+.cfw-head::before,
+.cfw-head::after,
+.quote-dribbble-head::before,
+.quote-dribbble-head::after,
+section[data-section]::before,
+section[data-section]::after{
+  background:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  opacity:0!important;
+}
+</style>
+
+</body>
+</html>
